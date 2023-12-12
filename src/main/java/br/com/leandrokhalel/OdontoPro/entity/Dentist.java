@@ -1,5 +1,6 @@
 package br.com.leandrokhalel.OdontoPro.entity;
 
+import br.com.leandrokhalel.OdontoPro.api.DentistaRequest;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -25,6 +26,13 @@ public class Dentist {
         this.cro = cro;
         this.email = email;
         this.phone = phone;
+    }
+
+    public Dentist(DentistaRequest request) {
+        this.name = request.name();
+        this.cro = request.cro();
+        this.email = request.email();
+        this.phone = request.phone();
     }
 
     public Long getId() {
