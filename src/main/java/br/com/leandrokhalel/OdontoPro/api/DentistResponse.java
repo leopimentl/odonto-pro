@@ -7,10 +7,11 @@ public record DentistResponse(
         String name,
         String cro,
         String email,
-        String phone
+        String phone,
+        boolean active
 ) {
 
     public DentistResponse(Dentist dentist) {
-        this(dentist.getId(), dentist.getName(), dentist.getCro(), dentist.getEmail(), dentist.getPhone());
+        this(dentist.getId(), dentist.getName(), dentist.getCro(), dentist.getEmail(), dentist.getPhone(), dentist.isActive());
     }
 }

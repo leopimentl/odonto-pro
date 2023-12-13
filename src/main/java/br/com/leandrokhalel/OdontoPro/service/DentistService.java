@@ -16,10 +16,11 @@ public class DentistService {
     @Autowired
     private DentistRepository dentistRepository;
 
+
     @Transactional(readOnly = true)
-    public Page<DentistResponse> findAll(Pageable pageable) {
+    public Page<DentistResponse> searchAllByActiveTrue(Pageable pageable) {
         return dentistRepository
-                .findAll(pageable)
+                .findAllByActiveTrue(pageable)
                 .map(dentist -> new DentistResponse(dentist));
     }
 
@@ -37,6 +38,7 @@ public class DentistService {
          return new DentistResponse(dentist);
     }
 
+    @Transactional
     public DentistResponse update(Long id, DentistaRequest request) {
         Dentist resourceById = dentistRepository.findById(id).get();
 
@@ -62,6 +64,7 @@ public class DentistService {
         }
     }
 
+    @Transactional
     public void delete(Long id) {
         Dentist resourceById = dentistRepository.findById(id).get();
 

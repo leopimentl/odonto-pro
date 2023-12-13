@@ -3,6 +3,7 @@ package br.com.leandrokhalel.OdontoPro.controller;
 import br.com.leandrokhalel.OdontoPro.api.DentistResponse;
 import br.com.leandrokhalel.OdontoPro.api.DentistaRequest;
 import br.com.leandrokhalel.OdontoPro.service.DentistService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +21,8 @@ public class DentistController {
     private DentistService dentistService;
 
     @GetMapping
-    public ResponseEntity<Page<DentistResponse>> findAll(Pageable pageable) {
-        Page<DentistResponse> dentists = dentistService.findAll(pageable);
+    public ResponseEntity<Page<DentistResponse>> searchAllByActiveTrue(Pageable pageable) {
+        Page<DentistResponse> dentists = dentistService.searchAllByActiveTrue(pageable);
         return ResponseEntity.ok(dentists);
     }
 
@@ -32,7 +33,7 @@ public class DentistController {
     }
 
     @PostMapping
-    public ResponseEntity<DentistResponse> save(@RequestBody DentistaRequest request) {
+    public ResponseEntity<DentistResponse> save(@RequestBody @Valid DentistaRequest request) {
 
         DentistResponse response = dentistService.save(request);
 
