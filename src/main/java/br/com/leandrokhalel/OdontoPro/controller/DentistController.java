@@ -44,4 +44,11 @@ public class DentistController {
 
         return ResponseEntity.created(location).body(response);
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<DentistResponse> update(@PathVariable Long id, @RequestBody DentistaRequest request) {
+        DentistResponse response = dentistService.update(id, request);
+
+        return ResponseEntity.ok(response);
+    }
 }

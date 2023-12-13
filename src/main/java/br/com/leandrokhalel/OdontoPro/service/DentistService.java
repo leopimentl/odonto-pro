@@ -36,4 +36,29 @@ public class DentistService {
 
          return new DentistResponse(dentist);
     }
+
+    public DentistResponse update(Long id, DentistaRequest request) {
+        Dentist resourceById = dentistRepository.findById(id).get();
+
+        updateDentist(resourceById, request);
+
+        Dentist updatedResource = dentistRepository.save(resourceById);
+
+        return new DentistResponse(updatedResource);
+    }
+
+    private void updateDentist(Dentist dentist, DentistaRequest request) {
+        if (request.name() != null) {
+            dentist.setName(request.name());
+        }
+        if (request.cro() != null) {
+            dentist.setCro(request.cro());
+        }
+        if (request.email() != null) {
+            dentist.setEmail(request.email());
+        }
+        if (request.phone() != null) {
+            dentist.setPhone(request.phone());
+        }
+    }
 }
