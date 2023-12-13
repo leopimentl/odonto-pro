@@ -51,4 +51,10 @@ public class DentistController {
 
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        dentistService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

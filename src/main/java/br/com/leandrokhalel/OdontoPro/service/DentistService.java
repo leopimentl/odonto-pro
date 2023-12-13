@@ -61,4 +61,12 @@ public class DentistService {
             dentist.setPhone(request.phone());
         }
     }
+
+    public void delete(Long id) {
+        Dentist resourceById = dentistRepository.findById(id).get();
+
+        resourceById.setActive(false);
+
+        dentistRepository.save(resourceById);
+    }
 }

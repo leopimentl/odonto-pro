@@ -16,6 +16,7 @@ public class Dentist {
     private String cro;
     private String email;
     private String phone;
+    private boolean active;
 
     public Dentist() {
     }
@@ -26,6 +27,7 @@ public class Dentist {
         this.cro = cro;
         this.email = email;
         this.phone = phone;
+        this.active = true;
     }
 
     public Dentist(DentistaRequest request) {
@@ -33,6 +35,7 @@ public class Dentist {
         this.cro = request.cro();
         this.email = request.email();
         this.phone = request.phone();
+        this.active = true;
     }
 
     public Long getId() {
@@ -73,6 +76,14 @@ public class Dentist {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override
